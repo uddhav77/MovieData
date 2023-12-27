@@ -21,7 +21,7 @@ const FetchDetail = () => {
     fetchData();
   }, [id]);
   return (
-    <div>
+    <div className="flex justify-center">
       <DetailsTable data={data} />
     </div>
   );

@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import StatusInput from "./StatusInput";
+import DetailsHeader from "./DetailsHeader";
+import TableInputs from "./TableInputs";
 
 const DetailsTable = ({ data }) => {
+  const [clicked, setClicked] = useState(false);
+
   return (
-    <div className="p-4 w-full flex flex-col items-center">
-      <div className="flex w-full justify-center">
-        <div>
-          <div className="font-bold text-4xl w-72">{data.title}</div>
-        </div>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-          alt={data.title}
-        />
-      </div>
-      <StatusInput />
+    <div className="p-4 w-fit bg-stone-100">
+      <DetailsHeader data={data} />
+      <TableInputs data={data} />
+      <button
+        className="bg-amber-700 p-2 rounded-xl text-white font-semibold"
+        onClick={() => setClicked(!clicked)}
+      >
+        Submit Your Status
+      </button>
+      {!clicked ? <StatusInput /> : null}
     </div>
   );
 };
