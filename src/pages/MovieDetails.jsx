@@ -4,7 +4,7 @@ import FetchDetail from "../components/FetchDetail";
 
 const MovieDetails = () => {
   return (
-    <div>
+    <div className="bg-slate-300 h-screen">
       <FetchDetail />
     </div>
   );

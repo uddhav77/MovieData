@@ -1,43 +1,19 @@
 import React, { useState } from "react";
+import StatusInput from "./StatusInput";
 
 const DetailsTable = ({ data }) => {
-  const [status, setStatus] = useState("Hold List");
-  const handleChange = (e) => {
-    setStatus(e.target.value);
-  };
   return (
-    <div>
-      <div>{data.title}</div>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-        alt={data.title}
-        width={100}
-        height={130}
-      />
-      <div>
-        <input
-          type="radio"
-          name="status"
-          value="Hold List"
-          onChange={handleChange}
+    <div className="p-4 w-full flex flex-col items-center">
+      <div className="flex w-full justify-center">
+        <div>
+          <div className="font-bold text-4xl w-72">{data.title}</div>
+        </div>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
+          alt={data.title}
         />
-        Hold List
-        <input
-          type="radio"
-          name="status"
-          value="Watching"
-          onChange={handleChange}
-        />
-        Watching
-        <input
-          type="radio"
-          name="status"
-          value="Completed"
-          onChange={handleChange}
-        />
-        Completed
       </div>
-      <div>{status}</div>
+      <StatusInput />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 const MovieList = () => {
   const [movie, setMovie] = useState([]);
@@ -21,19 +22,33 @@ const MovieList = () => {
     fetchData();
   }, []);
   return (
-    <div>
-      {movie.map((items) => (
-        <div key={items.id}>
-          <Link to={`/moviedetails/${items.id}`}>
-            <div>{items.title}</div>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
-              alt={items.title}
-            />
-            <div>{items.vote_average}</div>
-          </Link>
-        </div>
-      ))}
+    <div className="bg-slate-300">
+      <div className="text-center font-bold text-2xl pb-4">
+        Top Rated Movies
+      </div>
+      <div className="flex flex-wrap pt-4 gap-8 w-full justify-center">
+        {movie.map((items) => (
+          <div
+            key={items.id}
+            className="shadow-xl bg-gray-300 p-4 relative w-64"
+          >
+            <Link to={`/moviedetails/${items.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
+                alt={items.title}
+                className="h-72 w-full"
+              />
+              <div className="text-xl text-center mt-2 w-48 h-24 font-semi uppercase">
+                {items.title}
+              </div>
+              <div className="absolute top-4 p-1 bg-white rounded-ee-xl flex items-center">
+                <span>{<FaStar fill="#FFFF00" />}</span>
+                {items.vote_average}
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
