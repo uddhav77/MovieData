@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MovieList = () => {
   const [movie, setMovie] = useState([]);
@@ -23,12 +24,14 @@ const MovieList = () => {
     <div>
       {movie.map((items) => (
         <div key={items.id}>
-          <div>{items.title}</div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
-            alt={items.title}
-          />
-          <div>{items.vote_average}</div>
+          <Link to={`/moviedetails/${items.id}`}>
+            <div>{items.title}</div>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
+              alt={items.title}
+            />
+            <div>{items.vote_average}</div>
+          </Link>
         </div>
       ))}
     </div>
