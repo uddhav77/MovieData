@@ -24,6 +24,11 @@ const MovieList = () => {
       {movie.map((items) => (
         <div key={items.id}>
           <div>{items.title}</div>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${items.poster_path}`}
+            alt={items.title}
+          />
+          <div>{items.vote_average}</div>
         </div>
       ))}
     </div>
